@@ -2,21 +2,24 @@
   "build": {
     "arduino":{
       "ldscript": "esp32s3_out.ld",
-      "partitions": "default_8MB.csv"
+      "partitions": "default_8MB.csv",
+      "memory_type": "opi_opi"
     },
     "core": "esp32",
     "extra_flags": [
       "-DARDUINO_ESP32S3_DEV",
-      "-DARDUINO_USB_MODE=1",
+      "-DARDUINO_USB_MODE=0",
       "-DARDUINO_RUNNING_CORE=1",
-      "-DARDUINO_EVENT_RUNNING_CORE=1"
+      "-DARDUINO_EVENT_RUNNING_CORE=1",
+      "-DBOARD_HAS_PSRAM"
     ],
     "f_cpu": "240000000L",
     "f_flash": "80000000L",
-    "flash_mode": "qio",
+    "flash_mode": "dio",
+    "boot": "opi",
     "hwids": [
       [
-        "0x303A",
+        "0X303A",
         "0x1001"
       ]
     ],
@@ -24,7 +27,6 @@
     "variant": "esp32s3"
   },
   "connectivity": [
-    "bluetooth",
     "wifi"
   ],
   "debug": {
@@ -38,7 +40,7 @@
     "arduino",
     "espidf"
   ],
-  "name": "Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)",
+  "name": "Espressif ESP32-S3-DevKitC-2-opi",
   "upload": {
     "flash_size": "8MB",
     "maximum_ram_size": 327680,
