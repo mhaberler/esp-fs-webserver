@@ -67,7 +67,8 @@ void setup(){
   startFilesystem();
 
   // Try to connect to stored SSID, start AP if fails after timeout
-  myWebServer.setAP(WIFI_SSID, WIFI_PASSWORD);
+  // myWebServer.setAP(WIFI_SSID, WIFI_PASSWORD);
+  myWebServer.setAP("AP", "stiwoll4711");
   IPAddress myIP = myWebServer.startWiFi(15000);
   Serial.println("\n");
 
