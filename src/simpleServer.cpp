@@ -58,7 +58,7 @@ void handleLed() {
         }
         ledval = value;
 #else
-        digitalWrite(ledPin, value);
+        // digitalWrite(ledPin, value);
 #endif
     }
 
@@ -66,7 +66,7 @@ void handleLed() {
 #ifdef RGB_BUILTIN
     reply += ledval ? "OFF" : "ON";
 #else
-    reply += digitalRead(ledPin) ? "OFF" : "ON";
+    // reply += digitalRead(ledPin) ? "OFF" : "ON";
 #endif
     myWebServer.send(200, "text/plain", reply);
 }
