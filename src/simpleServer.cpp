@@ -73,8 +73,12 @@ void handleLed() {
 
 
 void setup() {
-
+    delay(3000);
     Serial.begin(115200);
+    log_i("CPU: %s rev%d, CPU Freq: %d Mhz, %d core(s)", ESP.getChipModel(), ESP.getChipRevision(), getCpuFrequencyMhz(), ESP.getChipCores());
+    log_i("Free heap: %d bytes", ESP.getFreeHeap());
+    log_i("Free PSRAM: %d bytes", ESP.getPsramSize());
+    log_i("SDK version: %s", ESP.getSdkVersion());
 
     // FILESYSTEM INIT
     startFilesystem();
