@@ -129,8 +129,8 @@ void FSWebServer::run()
     if (m_apmode)
         m_dnsServer->processNextRequest();
 
-    if (m_websocket != nullptr)
-        m_websocket->loop();
+    // if (m_websocket != nullptr)
+    //     m_websocket->loop();
     
 #if defined(ESP8266)
     MDNS.update();
@@ -1101,7 +1101,7 @@ void FSWebServer::printFileList(fs::FS& fs, Print& p, const char* dirName, uint8
         file = root.openNextFile();
     }
 }
-
+#if 0
 ///////////////////////////   WEBSOCKET  ///////////////////////////////////
 void FSWebServer::enableWebsocket(uint16_t port, ServerWebSocket::WsReceive_cb fn_receive,
         ServerWebSocket::WsConnect_cb fn_connect, ServerWebSocket::WsConnect_cb fn_disconnect)
@@ -1128,3 +1128,5 @@ bool FSWebServer::sendWebSocket(uint8_t num, const char* payload) {
     return m_websocket->sendTXT(num, payload);
 }
 ///////////////////////////   WEBSOCKET  ///////////////////////////////////
+
+#endif

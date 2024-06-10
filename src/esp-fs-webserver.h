@@ -60,7 +60,7 @@
 #endif
 
 #include <DNSServer.h>
-#include "esp-websocket.h"
+// #include "esp-websocket.h"
 
 typedef struct {
   size_t totalBytes;
@@ -183,6 +183,7 @@ public:
     */
     void requireAuthentication(bool require);
 
+#ifdef ENABLE_WS
     ///////////////////////////   WEBSOCKET  ///////////////////////////////////
     /*
       Enable built-in websocket server. Events like connect/disconnect or
@@ -199,7 +200,7 @@ public:
     inline bool sendWebSocket(uint8_t num, const String& payload) { return sendWebSocket(num, payload.c_str()); }
     inline ServerWebSocket * getWebSocketServer() { return m_websocket; }
     //////////////////////////////////////////////////////////////////////////////
-
+#endif
 #if ESP_FS_WS_SETUP
     /*
     * Get reference to current config.json file
@@ -278,7 +279,7 @@ private:
     uint16_t        m_port = 80;
     char            m_version[16] = {__TIME__};
     IPAddress       m_captiveIp = IPAddress(192, 168, 4, 1);
-    ServerWebSocket*  m_websocket;
+    // ServerWebSocket*  m_websocket;
 
     #if defined(ESP32)
     // Override default handleClient() method to increase connection speed
