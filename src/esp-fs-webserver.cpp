@@ -300,11 +300,12 @@ IPAddress FSWebServer::startWiFi(uint32_t timeout, bool apFlag, CallbackF fn)
         ESP_ERROR_CHECK( mdns_hostname_set(m_host.c_str()) );
         ESP_LOGI("", "mdns hostname set to: [%s]", m_host.c_str());
         // Set default mDNS instance name
-        ESP_ERROR_CHECK( mdns_instance_name_set("EXAMPLE_MDNS_INSTANCE") );
+        ESP_ERROR_CHECK( mdns_instance_name_set("esphost") );
         // Structure with TXT records
         mdns_txt_item_t serviceTxtData[1] = {{"board", "esp32"}};
         // Initialize service
-        ESP_ERROR_CHECK( mdns_service_add("ESP32-WebServer", "_http", "_tcp", 80, serviceTxtData, 1) );
+        // ESP_ERROR_CHECK( mdns_service_add("ESP32-WebServer", "_http", "_tcp", 80, serviceTxtData, 1) );
+        ESP_ERROR_CHECK( mdns_service_add("ESP32-WebServer", "_http", "_tcp", 80, serviceTxtData, 0) );
 #endif
 
         if ((WiFi.status() == WL_CONNECTED) || apFlag)
